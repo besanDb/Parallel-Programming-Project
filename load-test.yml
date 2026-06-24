@@ -1,0 +1,38 @@
+config:
+  target: "http://localhost:8080"
+
+  phases:
+    - duration: 1
+      arrivalRate: 5
+
+  payload:
+    path: "users.csv"
+    fields:
+      - email
+      - password
+    skipHeader: true
+    
+  defaults:
+    headers:
+      Content-Type: application/json
+
+scenarios:
+  - name: Login + Checkout flow
+    flow:
+
+
+      - log: "EMAIL={{ email }} PASSWORD={{ password }}"
+
+      - post:
+          url: "/auth/login"
+          json:
+            email: "{{ email }}"
+            password: "{{ password }}"
+          capture:
+            - json: "$.data.accessToken"
+              as: token
+
+      - post:
+          url: "/cart/checkout"
+          headers:
+            Authorization: "Bearer {{ token }}"

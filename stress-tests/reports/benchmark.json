@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-06-23T11:10:04.990Z",
+  "concurrent_users": 100,
+  "thresholds_passed": true,
+  "endpoints": {
+    "register": {
+      "p50_ms": "35",
+      "p95_ms": "86"
+    },
+    "login": {
+      "p50_ms": "28",
+      "p95_ms": "76"
+    },
+    "products": {
+      "p50_ms": "13",
+      "p95_ms": "60"
+    },
+    "checkout": {
+      "p50_ms": "22",
+      "p95_ms": "70"
+    }
+  },
+  "reliability": {
+    "error_rate_pct": "0.00",
+    "total_requests": 15695,
+    "req_per_second": "193.97"
+  }
+}
